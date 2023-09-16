@@ -167,7 +167,11 @@ def PPA(aruco_x, aruco_y):
 ```
 El rover se mueve a la coordenada donde es probable encontrar el ArUco.
 [![Python4-5.png](https://i.postimg.cc/bvDcxY2J/Python4-5.png)](https://postimg.cc/3yTc7T15)
+
+
 Aplica la estrategia de búsqueda, el patrón en cuadrados concéntricos es una estrategia de exploración que permite al rover buscar sistemáticamente el marcador en el mallado para encontrar el ArUco.
+
+
 [![Python4-9.png](https://i.postimg.cc/DyHt2kN3/Python4-9.png)](https://postimg.cc/mt3dwqRm)
 
 ## Agradecimientos
