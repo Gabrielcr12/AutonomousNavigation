@@ -34,6 +34,7 @@ Este proyecto hace uso de las siguientes bibliotecas de Python:
 **Tabla de contenidos**
 
 [TOCM]
+
 #Descripción del código
 ######Función para dibujar un rectángulo
 La función dibujar_rectangulo permite dibujar un rectángulo centrado en las coordenadas (aruco_x, aruco_y) con lados de longitud 2m. Es útil para visualizar el área de exploración del rover. Donde "m" es una variable que define la longitud del plano.
@@ -48,7 +49,8 @@ def dibujar_rectangulo(x, y, m):
         turtle.forward(2 * m)  # Lado horizontal
         turtle.left(90)
         turtle.forward(2 * m)  # Lado vertical
-        turtle.left(90) ``` 
+        turtle.left(90) ```
+
 [![Python2.png](https://i.postimg.cc/NFcmBMwP/Python2.png)](https://postimg.cc/r0fK9qsS)
 
 ######Función para dibujar mallado
@@ -88,7 +90,9 @@ Retorno de puntos: La función devuelve una lista de coordenadas de puntos dentr
         turtle.dot(5)  # Dibujar un punto de tamaño 5
     return puntos
     puntos = dibujar_mallado(aruco_x, aruco_y, m, dce)  ``` 
+    
 [![Python4.png](https://i.postimg.cc/8cpcZrGD/Python4.png)](https://postimg.cc/hzYKjvh3)
+
 ###### Función PPA
 La función comienza calculando la distancia del rover al objetivo ArUco y el ángulo en radianes entre el rover y el ArUco. Luego, convierte el ángulo a grados y ajusta su valor para que esté dentro del rango de 0 a 360 grados.
 
