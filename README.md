@@ -6,7 +6,7 @@ Este proyecto simula el comportamiento de un rover autónomo que se desplaza des
 
 ## Descripción
 
-El código simula un entorno de exploración para el rover y desarrolla un algoritmo de búsqueda en el área definida. Utiliza coordenadas aproximadas del marcador "ArUco" para generar un rectángulo delimitando el área a explorar por el rover.
+El código simula un entorno de exploración para el rover y desarrolla un algoritmo de búsqueda en el área definida. Utiliza coordenadas aproximadas del marcador "ArUco" para generar un cuadrado delimitando el área a explorar por el rover.
 
 ## Funcionalidades
 
@@ -35,18 +35,18 @@ Este proyecto hace uso de las siguientes bibliotecas de Python:
 **Tabla de contenidos**
 
 - [Descripción del código](#descripción-del-código)
-  - [Función para dibujar un rectángulo](#función-para-dibujar-un-rectángulo)
+  - [Función para dibujar un cuadrado](#función-para-dibujar-un-cuadrado)
   - [Función para dibujar mallado](#función-para-dibujar-mallado)
   - [Función PPA](#función-ppa)
 
 ## Descripción del código
 
-### Función para dibujar el rectángulo
+### Función para dibujar el cuadrado
 
-La función `dibujar_rectangulo` permite dibujar un rectángulo centrado en las coordenadas (aruco_x, aruco_y) con lados de longitud 2m. Es útil para visualizar el área de exploración del rover, donde "m" es una variable que define la longitud del plano.
+La función `dibujar_cuadrado` permite dibujar un cuadrado centrado en las coordenadas (aruco_x, aruco_y) con lados de longitud 2m. Es útil para visualizar el área de exploración del rover, donde "m" es una variable que define la longitud del plano.
 
 ```
-def dibujar_rectangulo(x, y, m):
+def dibujar_cuadrado(x, y, m):
     turtle.penup()
     turtle.goto(x - m, y - m)  # Esquina superior izquierda
     turtle.pendown()
@@ -62,13 +62,13 @@ def dibujar_rectangulo(x, y, m):
 
 #### Función para dibujar mallado
 
-La función `dibujar_mallado` crea un patrón de puntos en forma de cuadrícula dentro de un rectángulo alrededor de la posición del marcador "ArUco". Aquí está cómo funciona en resumen:
+La función `dibujar_mallado` crea un patrón de puntos en forma de cuadrícula dentro de un cuadrado alrededor de la posición del marcador "ArUco". Aquí está cómo funciona en resumen:
 
-Cálculo de la cantidad de puntos: Se calcula cuántos puntos en filas y columnas caben en el rectángulo basado en su tamaño y la distancia entre puntos.
+Cálculo de la cantidad de puntos: Se calcula cuántos puntos en filas y columnas caben en el cuadrado basado en su tamaño y la distancia entre puntos.
 
-Generación de puntos: Se crean puntos en una cuadrícula dentro del rectángulo, comenzando desde la esquina superior izquierda y avanzando hacia la derecha y hacia abajo.
+Generación de puntos: Se crean puntos en una cuadrícula dentro del cuadrado, comenzando desde la esquina superior izquierda y avanzando hacia la derecha y hacia abajo.
 
-Dibujar el rectángulo: Se dibuja un rectángulo alrededor de la posición del marcador "ArUco" para visualizar el área de exploración.
+Dibujar el cuadrado: Se dibuja un cuadrado alrededor de la posición del marcador "ArUco" para visualizar el área de exploración.
 
 Dibujar los puntos: Cada punto en la cuadrícula se dibuja como un pequeño círculo en la ventana de Turtle.
 
@@ -76,11 +76,11 @@ Retorno de puntos: La función devuelve una lista de coordenadas de puntos dentr
 
 ```
 def dibujar_mallado(aruco_x, aruco_y, m, dce):
-    # Calcular la cantidad de puntos en cada fila y columna del rectángulo
+    # Calcular la cantidad de puntos en cada fila y columna del cuadrado
     num_puntos_x = int(2 * m / dce)
     num_puntos_y = int(2 * m / dce)
 
-    # Generar puntos en el mallado dentro del rectángulo
+    # Generar puntos en el mallado dentro del cuadrado
     puntos = []
 
     for i in range(num_puntos_x + 1):
@@ -89,8 +89,8 @@ def dibujar_mallado(aruco_x, aruco_y, m, dce):
             y = aruco_y - m + j * dce
             puntos.append((x, y))
 
-    # Dibujar el rectángulo centrado en (arucox, arucoy)
-    dibujar_rectangulo(aruco_x, aruco_y, m)
+    # Dibujar el cuadrado centrado en (arucox, arucoy)
+    dibujar_cuadrado(aruco_x, aruco_y, m)
 
     # Dibujar los puntos estáticamente
     turtle.penup()
@@ -108,7 +108,7 @@ La función `PPA`comienza calculando la distancia del rover al objetivo ArUco y 
 
 Luego, la función configura la dirección del rover hacia el ArUco y avanza hacia él. Después de moverse, calcula las coordenadas actuales del rover y muestra el ángulo en grados y la distancia diagonal al ArUco.
 
-El rover luego se mueve a través de un patrón de puntos en cuadrados concéntricos alrededor del ArUco. Para hacer esto, se generan puntos en un rectángulo alrededor del ArUco, y estos puntos se ordenan por su distancia al centro del ArUco. Luego, el rover se mueve secuencialmente hacia cada uno de estos puntos, girando 360 grados en su propio eje después de cada movimiento. Las coordenadas del rover se imprimen después de cada movimiento.
+El rover luego se mueve a través de un patrón de puntos en cuadrados concéntricos alrededor del ArUco. Para hacer esto, se generan puntos en un cuadrado alrededor del ArUco, y estos puntos se ordenan por su distancia al centro del ArUco. Luego, el rover se mueve secuencialmente hacia cada uno de estos puntos, girando 360 grados en su propio eje después de cada movimiento. Las coordenadas del rover se imprimen después de cada movimiento.
 
 Al final, se llama a la función PPA con las coordenadas aproximadas del ArUco y se finaliza la simulación de Turtle.
 ```
@@ -140,11 +140,11 @@ def PPA(aruco_x, aruco_y):
     rover_x, rover_y = pen.pos()
     print(f"Distancia diagonal del rover a ArUco: DRA= {DRA:.2f}")
     
-    # Calcular la cantidad de puntos en cada fila y columna del rectángulo
+    # Calcular la cantidad de puntos en cada fila y columna del cuadrado
     num_puntos_x = int(2 * m / dce)
     num_puntos_y = int(2 * m / dce)
 
-    # Generar puntos en el mallado dentro del rectángulo
+    # Generar puntos en el mallado dentro del cuadrado
     puntos = []
 
     for i in range(num_puntos_x + 1):
