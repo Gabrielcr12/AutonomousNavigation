@@ -41,7 +41,7 @@ Este proyecto hace uso de las siguientes bibliotecas de Python:
 
 ## Descripción del código
 
-### Función para dibujar un rectángulo
+### Función para dibujar el rectángulo
 
 La función `dibujar_rectangulo` permite dibujar un rectángulo centrado en las coordenadas (aruco_x, aruco_y) con lados de longitud 2m. Es útil para visualizar el área de exploración del rover, donde "m" es una variable que define la longitud del plano.
 
@@ -60,8 +60,9 @@ def dibujar_rectangulo(x, y, m):
 
 [![Python2.png](https://i.postimg.cc/NFcmBMwP/Python2.png)](https://postimg.cc/r0fK9qsS)
 
-######Función para dibujar mallado
-La función dibujar_mallado crea un patrón de puntos en forma de cuadrícula dentro de un rectángulo alrededor de la posición del marcador "ArUco". Aquí está cómo funciona en resumen:
+###### Función para dibujar mallado
+
+La función `dibujar_mallado` crea un patrón de puntos en forma de cuadrícula dentro de un rectángulo alrededor de la posición del marcador "ArUco". Aquí está cómo funciona en resumen:
 
 Cálculo de la cantidad de puntos: Se calcula cuántos puntos en filas y columnas caben en el rectángulo basado en su tamaño y la distancia entre puntos.
 
@@ -103,7 +104,7 @@ def dibujar_mallado(aruco_x, aruco_y, m, dce):
 [![Python4.png](https://i.postimg.cc/8cpcZrGD/Python4.png)](https://postimg.cc/hzYKjvh3)
 
 ###### Función PPA
-La función comienza calculando la distancia del rover al objetivo ArUco y el ángulo en radianes entre el rover y el ArUco. Luego, convierte el ángulo a grados y ajusta su valor para que esté dentro del rango de 0 a 360 grados.
+La función `PPA`comienza calculando la distancia del rover al objetivo ArUco y el ángulo en radianes entre el rover y el ArUco. Luego, convierte el ángulo a grados y ajusta su valor para que esté dentro del rango de 0 a 360 grados.
 
 Luego, la función configura la dirección del rover hacia el ArUco y avanza hacia él. Después de moverse, calcula las coordenadas actuales del rover y muestra el ángulo en grados y la distancia diagonal al ArUco.
 
