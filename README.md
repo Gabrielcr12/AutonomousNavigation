@@ -167,8 +167,6 @@ def PPA(aruco_x, aruco_y):
         print(f"Coordenadas del rover: x = {rover_x:.2f}, y = {rover_y:.2f}")
 ```
 El rover se mueve a la coordenada donde es probable encontrar el ArUco.
-
-
 [![Python4-5.png](https://i.postimg.cc/bvDcxY2J/Python4-5.png)](https://postimg.cc/3yTc7T15)
 
 
