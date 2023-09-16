@@ -60,7 +60,7 @@ def dibujar_rectangulo(x, y, m):
 
 [![Python2.png](https://i.postimg.cc/NFcmBMwP/Python2.png)](https://postimg.cc/r0fK9qsS)
 
-###### Función para dibujar mallado
+#### Función para dibujar mallado
 
 La función `dibujar_mallado` crea un patrón de puntos en forma de cuadrícula dentro de un rectángulo alrededor de la posición del marcador "ArUco". Aquí está cómo funciona en resumen:
 
@@ -103,7 +103,7 @@ def dibujar_mallado(aruco_x, aruco_y, m, dce):
     
 [![Python4.png](https://i.postimg.cc/8cpcZrGD/Python4.png)](https://postimg.cc/hzYKjvh3)
 
-###### Función PPA
+### Función PPA
 La función `PPA`comienza calculando la distancia del rover al objetivo ArUco y el ángulo en radianes entre el rover y el ArUco. Luego, convierte el ángulo a grados y ajusta su valor para que esté dentro del rango de 0 a 360 grados.
 
 Luego, la función configura la dirección del rover hacia el ArUco y avanza hacia él. Después de moverse, calcula las coordenadas actuales del rover y muestra el ángulo en grados y la distancia diagonal al ArUco.
@@ -167,6 +167,8 @@ def PPA(aruco_x, aruco_y):
         print(f"Coordenadas del rover: x = {rover_x:.2f}, y = {rover_y:.2f}")
 ```
 El rover se mueve a la coordenada donde es probable encontrar el ArUco.
+
+
 [![Python4-5.png](https://i.postimg.cc/bvDcxY2J/Python4-5.png)](https://postimg.cc/3yTc7T15)
 
 
@@ -174,6 +176,7 @@ Aplica la estrategia de búsqueda, el patrón en cuadrados concéntricos es una 
 
 
 [![Python4-9.png](https://i.postimg.cc/DyHt2kN3/Python4-9.png)](https://postimg.cc/mt3dwqRm)
+
 
 ## Agradecimientos
 
