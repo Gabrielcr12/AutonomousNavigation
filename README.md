@@ -6,7 +6,7 @@ Este proyecto simula el comportamiento de un rover autónomo que se desplaza des
 
 ## Descripción
 
-El código simula un entorno de exploración para el rover y desarrolla un algoritmo de búsqueda en el área definida. Utiliza coordenadas aproximadas del marcador "ArUco"para generar un rectangulo delimitando el área a explorar por el rover.
+El código simula un entorno de exploración para el rover y desarrolla un algoritmo de búsqueda en el área definida. Utiliza coordenadas aproximadas del marcador "ArUco" para generar un rectángulo delimitando el área a explorar por el rover.
 
 ## Funcionalidades
 
@@ -14,8 +14,11 @@ El código simula un entorno de exploración para el rover y desarrolla un algor
 - Desarrollo del algoritmo de búsqueda en un área predefinida.
 - Cálculo de la dirección y distancia del rover con respecto al punto de destino.
 - Movimiento estratégico del rover siguiendo un patrón en cuadrados concéntricos.
-####Instalación y Requisitos
-Python: Asegúrate de tener Python instalado en tu sistema. Puedes descargarlo desde [Python.org](https://www.python.org/downloads/)
+
+#### Instalación y Requisitos
+
+Python: Asegúrate de tener Python instalado en tu sistema. Puedes descargarlo desde [Python.org](https://www.python.org/downloads/).
+
 ## Bibliotecas Utilizadas
 
 Este proyecto hace uso de las siguientes bibliotecas de Python:
@@ -29,15 +32,18 @@ Este proyecto hace uso de las siguientes bibliotecas de Python:
 - **Math**: Proporciona funciones matemáticas comunes.
   - [Documentación de Math](https://docs.python.org/3/library/math.html)
 
-
-
 **Tabla de contenidos**
 
-[TOCM]
+- [Descripción del código](#descripción-del-código)
+  - [Función para dibujar un rectángulo](#función-para-dibujar-un-rectángulo)
+  - [Función para dibujar mallado](#función-para-dibujar-mallado)
+  - [Función PPA](#función-ppa)
 
-#Descripción del código
-######Función para dibujar un rectángulo
-La función dibujar_rectangulo permite dibujar un rectángulo centrado en las coordenadas (aruco_x, aruco_y) con lados de longitud 2m. Es útil para visualizar el área de exploración del rover. Donde "m" es una variable que define la longitud del plano.
+## Descripción del código
+
+### Función para dibujar un rectángulo
+
+La función `dibujar_rectangulo` permite dibujar un rectángulo centrado en las coordenadas (aruco_x, aruco_y) con lados de longitud 2m. Es útil para visualizar el área de exploración del rover, donde "m" es una variable que define la longitud del plano.
 
 ```
 def dibujar_rectangulo(x, y, m):
@@ -49,7 +55,8 @@ def dibujar_rectangulo(x, y, m):
         turtle.forward(2 * m)  # Lado horizontal
         turtle.left(90)
         turtle.forward(2 * m)  # Lado vertical
-        turtle.left(90) ```
+        turtle.left(90)
+```
 
 [![Python2.png](https://i.postimg.cc/NFcmBMwP/Python2.png)](https://postimg.cc/r0fK9qsS)
 
@@ -65,8 +72,9 @@ Dibujar el rectángulo: Se dibuja un rectángulo alrededor de la posición del m
 Dibujar los puntos: Cada punto en la cuadrícula se dibuja como un pequeño círculo en la ventana de Turtle.
 
 Retorno de puntos: La función devuelve una lista de coordenadas de puntos dentro del área de exploración.
+
 ```
-	def dibujar_mallado(aruco_x, aruco_y, m, dce):
+def dibujar_mallado(aruco_x, aruco_y, m, dce):
     # Calcular la cantidad de puntos en cada fila y columna del rectángulo
     num_puntos_x = int(2 * m / dce)
     num_puntos_y = int(2 * m / dce)
@@ -89,7 +97,8 @@ Retorno de puntos: La función devuelve una lista de coordenadas de puntos dentr
         turtle.goto(x, y)
         turtle.dot(5)  # Dibujar un punto de tamaño 5
     return puntos
-    puntos = dibujar_mallado(aruco_x, aruco_y, m, dce)  ``` 
+    puntos = dibujar_mallado(aruco_x, aruco_y, m, dce)
+``` 
     
 [![Python4.png](https://i.postimg.cc/8cpcZrGD/Python4.png)](https://postimg.cc/hzYKjvh3)
 
@@ -154,7 +163,8 @@ def PPA(aruco_x, aruco_y):
         
         # Imprimir las coordenadas actuales del rover después de cada movimiento
         rover_x, rover_y = pen.pos()
-        print(f"Coordenadas del rover: x = {rover_x:.2f}, y = {rover_y:.2f}")```
+        print(f"Coordenadas del rover: x = {rover_x:.2f}, y = {rover_y:.2f}")
+```
 El rover se mueve a la coordenada donde es probable encontrar el ArUco.
 [![Python4-5.png](https://i.postimg.cc/bvDcxY2J/Python4-5.png)](https://postimg.cc/3yTc7T15)
 Aplica la estrategia de búsqueda, el patrón en cuadrados concéntricos es una estrategia de exploración que permite al rover buscar sistemáticamente el marcador en el mallado para encontrar el ArUco.
