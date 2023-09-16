@@ -1,10 +1,10 @@
 
-                        # A U T O N O M U S       N A V I G A T I O N
+                                    # A U T O N O M U S       N A V I G A T I O N #
 import random
 import turtle
 import math
 
-# Rango de coordenadas X & Y en el que puede estar el ArUco
+# Rango de coordenadas X e Y en el que puede estar el ArUco
 min_x = -250  # Valor mínimo para la coordenada X
 max_x = 250   # Valor máximo para la coordenada X
 min_y = -250  # Valor mínimo para la coordenada Y
@@ -17,8 +17,8 @@ aruco_y = random.uniform(min_y, max_y)
 # Imprimir las coordenadas generadas para el ArUco
 print(f"Coordenadas del ArUco: x = {aruco_x:.2f}, y = {aruco_y:.2f}")
 
-# Mitad del espacio restringido para buscar el ArUco
-m= 100
+#distancia de nuestro plano
+m = 100
 # Valor de DCE cámara estereo
 dce = 20
 # Crear una ventana de Turtle
@@ -35,9 +35,9 @@ puntos_estaticos = [(aruco_x,aruco_y)]
 
 # Dibujar puntos estáticos en las coordenadas especificadas
 for x, y in puntos_estaticos:
-    pen.penup()  
-    pen.goto(x, y)  
-    pen.dot(7, "orange")  # Dibujar un punto de tamaño 7 en naranja
+    pen.penup()  # Levantar el lápiz para moverse sin dibujar
+    pen.goto(x, y)  # Ir a la coordenada (x, y)
+    pen.dot(7, "orange")  # Dibujar un punto de tamaño 5 en naranja
     
     
 pen.penup()     
@@ -46,8 +46,8 @@ pen.pendown()
 
         #---------------------------------------------------------------------------------#
 
-# Función para dibujar un rectángulo centrado en (x, y) con lados de longitud 2m
-def dibujar_rectangulo(x, y, m):
+# Función para dibujar un cuadrado centrado en (x, y) con lados de longitud 2 m
+def dibujar_cuadrado(x, y, m):
     turtle.penup()
     turtle.goto(x - m, y - m)  # Esquina superior izquierda
     turtle.pendown()
@@ -58,13 +58,13 @@ def dibujar_rectangulo(x, y, m):
         turtle.forward(2 * m)  # Lado vertical
         turtle.left(90)
 
-# Función para dibujar un mallado completo en el rectángulo
+# Función para dibujar un mallado completo en el cuadrado
 def dibujar_mallado(aruco_x, aruco_y, m, dce):
-    # Calcular la cantidad de puntos en cada fila y columna del rectángulo
+    # Calcular la cantidad de puntos en cada fila y columna del cuadrado
     num_puntos_x = int(2 * m / dce)
     num_puntos_y = int(2 * m / dce)
 
-    # Generar puntos en el mallado dentro del rectángulo
+    # Generar puntos en el mallado dentro del cuadrado
     puntos = []
 
     for i in range(num_puntos_x + 1):
@@ -73,8 +73,8 @@ def dibujar_mallado(aruco_x, aruco_y, m, dce):
             y = aruco_y - m + j * dce
             puntos.append((x, y))
 
-    # Dibujar el rectángulo centrado en (arucox, arucoy)
-    dibujar_rectangulo(aruco_x, aruco_y, m)
+    # Dibujar el cuadrado centrado en (arucox, arucoy)
+    dibujar_cuadrado(aruco_x, aruco_y, m)
 
     # Dibujar los puntos estáticamente
     turtle.penup()
@@ -83,13 +83,16 @@ def dibujar_mallado(aruco_x, aruco_y, m, dce):
         turtle.dot(5)  # Dibujar un punto de tamaño 5
     return puntos
 
-# Llamar a la función para dibujar el mallado completo en el rectángulo y obtener los puntos
+# Llamar a la función para dibujar el mallado completo en el cuadrado y obtener los puntos
 puntos = dibujar_mallado(aruco_x, aruco_y, m, dce)
 
         #---------------------------------------------------------------------------#
 
 ## Función para llevar el rover al las coordenadas aproximadas
 def PPA(aruco_x, aruco_y):
+
+    
+    
     
     # Calcular el ángulo en radianes
     ARAR = math.atan2(aruco_y, aruco_x)
@@ -113,11 +116,11 @@ def PPA(aruco_x, aruco_y):
     rover_x, rover_y = pen.pos()  # Obtener las coordenadas actuales del rover
     print(f"Distancia diagonal del rover a ArUco: DRA= {DRA:.2f}")
     
-  # Calcular la cantidad de puntos en cada fila y columna del rectángulo
+  # Calcular la cantidad de puntos en cada fila y columna del cuadrado
     num_puntos_x = int(2 * m / dce)
     num_puntos_y = int(2 * m / dce)
 
-    # Generar puntos en el mallado dentro del rectángulo
+    # Generar puntos en el mallado dentro del cuadrado
     puntos = []
 
     for i in range(num_puntos_x + 1):
@@ -147,6 +150,8 @@ PPA(aruco_x, aruco_y)
 
 # Finalizar la sesión de Turtle
 turtle.done()
+
+
 
 
 
